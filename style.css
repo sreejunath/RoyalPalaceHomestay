@@ -16,6 +16,10 @@
     --dark-text: #eee;
     --dark-card-bg: #333;
     --dark-border: #444;
+    --dark-header-bg: rgba(34, 34, 34, 0.95);
+    --dark-table-even-row: #2b2b2b; /* Slightly lighter for alternate rows */
+    --dark-input-bg: #444;
+    --dark-input-border: #666;
 }
 
 /* Base styles for dark theme toggle */
@@ -25,8 +29,18 @@ body.dark-theme {
 }
 
 body.dark-theme #navbar {
-    background-color: rgba(34, 34, 34, 0.95);
+    background-color: var(--dark-header-bg); /* Use specific dark header bg var */
     border-bottom: 1px solid var(--dark-border);
+}
+
+/* Added for sticky nav scroll effect in dark mode */
+body.dark-theme #navbar.scrolled {
+    background-color: var(--dark-header-bg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+body.dark-theme .logo a {
+    color: var(--dark-text); /* Ensure logo text is visible */
 }
 
 body.dark-theme .nav-links a {
@@ -37,6 +51,12 @@ body.dark-theme .nav-links a:hover {
     color: var(--secondary-color);
 }
 
+/* Ensure hamburger bars are visible in dark mode */
+body.dark-theme .hamburger .bar {
+    background-color: var(--dark-text);
+}
+
+
 body.dark-theme .section-padding {
     background-color: var(--dark-bg);
 }
@@ -45,26 +65,28 @@ body.dark-theme .bg-light {
     background-color: var(--dark-card-bg);
 }
 
-body.dark-theme .room-card,
-body.dark-theme .attraction-item,
-body.dark-theme .gallery-item img {
-    background-color: var(--dark-card-bg);
-    border: 1px solid var(--dark-border);
+/* Updated color for all headings in dark mode for better contrast */
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6 {
+    color: var(--secondary-color); /* Headings in accent color for contrast */
 }
 
-body.dark-theme .rate-table table,
-body.dark-theme .rate-table th,
-body.dark-theme .rate-table td {
-    border-color: var(--dark-border);
+/* Ensure 'after' pseudo-element for h2 maintains its color */
+body.dark-theme h2::after {
+    background-color: var(--secondary-color);
 }
 
-body.dark-theme footer {
-    background-color: #1a1a1a;
-    border-top: 1px solid var(--dark-border);
+/* General link color for dark theme */
+body.dark-theme a {
+    color: var(--secondary-color);
 }
 
-body.dark-theme .whatsapp-float {
-    background-color: #25D366; /* Keep WhatsApp green */
+body.dark-theme a:hover {
+    color: var(--primary-color);
 }
 
 body.dark-theme .btn {
@@ -72,7 +94,261 @@ body.dark-theme .btn {
     color: var(--white);
 }
 
-/* Basic Reset & Typography */
+body.dark-theme .btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+/* Hero Section specific (optional, if you want darker overlay) */
+body.dark-theme .hero-section::before {
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay in dark mode */
+}
+body.dark-theme .hero-content h1,
+body.dark-theme .hero-content p {
+    color: var(--white); /* Keep hero text white */
+}
+body.dark-theme .book-now-btn {
+    background-color: var(--accent-color);
+}
+body.dark-theme .book-now-btn:hover {
+    background-color: #218838;
+}
+
+/* About Us Section */
+body.dark-theme #about p {
+    color: var(--dark-text);
+}
+
+/* Rooms Section */
+body.dark-theme .room-card {
+    background-color: var(--dark-card-bg);
+    border: 1px solid var(--dark-border);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Slightly stronger shadow */
+}
+
+body.dark-theme .room-card h3 {
+    color: var(--secondary-color);
+}
+
+body.dark-theme .room-card ul li {
+    color: var(--dark-text);
+}
+
+body.dark-theme .room-card ul li i {
+    color: var(--secondary-color);
+}
+
+/* Meal Plans Section */
+body.dark-theme .plans-info {
+    background-color: var(--dark-card-bg);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+body.dark-theme .plans-info h3 {
+    color: var(--secondary-color);
+}
+
+body.dark-theme .plans-info ul li {
+    color: var(--dark-text);
+}
+
+body.dark-theme .plans-info ul li strong {
+    color: var(--dark-text);
+}
+
+/* Room Rate Table */
+body.dark-theme .rate-table table {
+    background-color: var(--dark-card-bg);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border: 1px solid var(--dark-border); /* Added border to table */
+}
+
+body.dark-theme .rate-table th, body.dark-theme .rate-table td {
+    border: 1px solid var(--dark-border);
+    color: var(--dark-text);
+}
+
+body.dark-theme .rate-table th {
+    background-color: #0056b3; /* A slightly darker primary color for header */
+    color: var(--white); /* Ensure text is white on dark header */
+}
+
+body.dark-theme .rate-table tr:nth-child(even) {
+    background-color: var(--dark-table-even-row); /* Alternate row color */
+}
+
+body.dark-theme .rate-table .note {
+    color: var(--dark-text);
+}
+
+
+/* Gallery Section */
+body.dark-theme .gallery-item {
+    background-color: var(--dark-card-bg); /* Consistent background */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+body.dark-theme .gallery-item img {
+    border: 1px solid var(--dark-border); /* Added border to images if needed */
+}
+
+/* Lightbox */
+body.dark-theme .lightbox {
+    background-color: rgba(0,0,0,0.95);
+}
+body.dark-theme .close-btn {
+    color: #f1f1f1;
+}
+body.dark-theme .close-btn:hover,
+body.dark-theme .close-btn:focus {
+    color: #bbb;
+}
+
+
+/* Amenities Section */
+body.dark-theme .amenities-list li {
+    background-color: var(--dark-card-bg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    color: var(--dark-text);
+}
+
+body.dark-theme .amenities-list li i {
+    color: var(--secondary-color);
+}
+
+/* Nearby Attractions Section */
+body.dark-theme .attraction-item {
+    background-color: var(--dark-card-bg);
+    border: 1px solid var(--dark-border); /* Added border */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+body.dark-theme .attraction-item h3 {
+    color: var(--secondary-color);
+}
+
+body.dark-theme .attraction-item p {
+    color: var(--dark-text);
+}
+
+/* Contact Us Section */
+body.dark-theme .contact-grid {
+    /* No specific changes needed here unless grid layout itself changes */
+}
+
+body.dark-theme .contact-info {
+    background-color: var(--dark-card-bg);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+body.dark-theme .contact-info h3 {
+    color: var(--secondary-color);
+}
+
+body.dark-theme .contact-info p {
+    color: var(--dark-text);
+}
+
+body.dark-theme .contact-info p i {
+    color: var(--secondary-color);
+}
+
+body.dark-theme .contact-info a {
+    color: var(--secondary-color); /* Link color in dark mode */
+}
+body.dark-theme .contact-info a:hover {
+    color: var(--primary-color);
+}
+
+body.dark-theme .cta-whatsapp {
+    background-color: #25D366; /* Keep WhatsApp green */
+}
+body.dark-theme .cta-whatsapp:hover {
+    background-color: #1DA851;
+}
+
+body.dark-theme .google-map {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Optional Booking Form (if uncommented in HTML) */
+body.dark-theme .booking-form-container {
+    background-color: var(--dark-card-bg);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+body.dark-theme .booking-form h3 {
+    color: var(--secondary-color);
+}
+
+body.dark-theme .booking-form label {
+    color: var(--dark-text);
+}
+
+body.dark-theme .booking-form input[type="text"],
+body.dark-theme .booking-form input[type="email"],
+body.dark-theme .booking-form input[type="tel"],
+body.dark-theme .booking-form input[type="date"],
+body.dark-theme .booking-form input[type="number"],
+body.dark-form select,
+body.dark-theme .booking-form textarea {
+    background-color: var(--dark-input-bg);
+    color: var(--dark-text);
+    border: 1px solid var(--dark-input-border);
+}
+
+body.dark-theme .booking-form input:focus,
+body.dark-theme .booking-form select:focus,
+body.dark-theme .booking-form textarea:focus {
+    border-color: var(--secondary-color); /* Highlight color on focus */
+}
+
+body.dark-theme .booking-form button.btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Footer */
+body.dark-theme footer {
+    background-color: #1a1a1a; /* Darker footer background */
+    border-top: 5px solid var(--secondary-color);
+    color: var(--dark-text);
+}
+
+body.dark-theme footer p {
+    color: var(--dark-text);
+}
+
+body.dark-theme .social-icons a {
+    color: var(--dark-text);
+}
+body.dark-theme .social-icons a:hover {
+    color: var(--secondary-color);
+}
+
+/* Floating WhatsApp Button */
+body.dark-theme .whatsapp-float {
+    background-color: #25D366; /* Keep WhatsApp green */
+    color: var(--white);
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.4); /* Darker shadow */
+}
+body.dark-theme .whatsapp-float:hover {
+    background-color: #1DA851;
+}
+
+/* Dark/Light Theme Toggle */
+body.dark-theme .theme-toggle {
+    background-color: var(--dark-card-bg);
+    border: 1px solid var(--dark-border);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+body.dark-theme .theme-toggle i {
+    color: var(--dark-text);
+}
+
+
+/* Basic Reset & Typography (No changes needed here for dark theme) */
 * {
     margin: 0;
     padding: 0;
@@ -810,6 +1086,76 @@ body.dark-theme .theme-toggle i {
     color: var(--dark-text);
 }
 
+/* Activities Section Styles */
+.activity-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 2rem;
+}
+
+.kayaking-video-container {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+.kayaking-video {
+    width: 100%;
+    max-height: 450px; /* Limit video height */
+    border-radius: 8px;
+    display: block; /* Remove extra space below video */
+    margin-bottom: 15px;
+}
+
+.video-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin-bottom: 0;
+    text-align: justify; /* Justify text for better readability */
+}
+
+/* Dark mode for Activities section */
+body.dark-theme .activity-content {
+    color: var(--dark-text);
+}
+
+body.dark-theme .kayaking-video-container {
+    background-color: var(--dark-card-bg);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+body.dark-theme .video-description {
+    color: var(--dark-text);
+}
+
+/* Responsive adjustments for Activities */
+@media (max-width: 768px) {
+    .kayaking-video-container {
+        padding: 15px;
+    }
+    .kayaking-video {
+        max-height: 300px;
+    }
+    .video-description {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .kayaking-video {
+        max-height: 200px;
+    }
+    .video-description {
+        font-size: 0.9rem;
+    }
+}
 
 /* Responsive Design */
 @media (max-width: 992px) {
@@ -888,3 +1234,144 @@ body.dark-theme .theme-toggle i {
         width: 40px;
         height: 40px;
     }
+
+    .theme-toggle i {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .book-now-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .contact-info p {
+        font-size: 1rem;
+    }
+
+    .contact-info p i {
+        margin-right: 10px;
+        font-size: 1.1rem;
+    }
+
+    .cta-whatsapp {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+
+    footer p {
+        font-size: 0.85rem;
+    }
+
+    .social-icons a {
+        font-size: 1.5rem;
+        margin: 0 10px;
+    }
+}
+/* logo */
+.logo a {
+    display: flex; /* Makes the logo image and text align horizontally */
+    align-items: center; /* Vertically aligns them in the middle */
+    gap: 10px; /* Adds space between the logo image and text */
+    color: inherit; /* Inherits color from .logo or navbar */
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 40px; /* Adjust logo height as needed */
+    width: auto; /* Maintain aspect ratio */
+    vertical-align: middle; /* Align with text baseline if not using flex */
+}
+
+/* Dark theme adjustments for logo */
+body.dark-theme .logo a {
+    color: var(--dark-text); /* Ensure logo text color is correct in dark mode */
+}
+/* Activities Section Styles */
+.activity-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 2rem;
+}
+
+.kayaking-video-container {
+    position: relative; /* For proper positioning of potential overlays */
+    background-color: var(--white); /* White background for the container */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 800px; /* Max width for the video container */
+    width: 100%; /* Take full width up to max-width */
+    text-align: center;
+}
+
+.kayaking-video {
+    width: 100%; /* Make video fill its container */
+    max-height: 450px; /* Limit video height for larger screens */
+    border-radius: 8px; /* Rounded corners for the video */
+    display: block; /* Ensures no extra space below the video */
+    margin-bottom: 15px; /* Space between video and description */
+}
+
+.video-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-dark); /* Default text color */
+    margin-bottom: 0;
+    text-align: justify; /* Justify text for better readability */
+}
+
+/* Dark mode adjustments for Activities section */
+body.dark-theme .activity-content {
+    color: var(--dark-text);
+}
+
+body.dark-theme .kayaking-video-container {
+    background-color: var(--dark-card-bg); /* Dark background for container in dark mode */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Slightly darker shadow */
+}
+
+body.dark-theme .video-description {
+    color: var(--dark-text); /* Ensure description text color is correct in dark mode */
+}
+
+/* Responsive adjustments for Activities section */
+@media (max-width: 768px) {
+    .kayaking-video-container {
+        padding: 15px; /* Smaller padding on smaller screens */
+    }
+    .kayaking-video {
+        max-height: 300px; /* Adjust max height for tablets */
+    }
+    .video-description {
+        font-size: 1rem; /* Slightly smaller font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .kayaking-video {
+        max-height: 200px; /* Further adjust max height for mobile phones */
+    }
+    .video-description {
+        font-size: 0.9rem; /* Even smaller font size for very small screens */
+    }
+}
