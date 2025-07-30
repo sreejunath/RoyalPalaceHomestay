@@ -1375,3 +1375,83 @@ body.dark-theme .video-description {
         font-size: 0.9rem; /* Even smaller font size for very small screens */
     }
 }
+
+/* Footer Styles */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+}
+
+footer .container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+footer .social-icons a {
+    color: var(--footer-icon-color);
+    font-size: 1.2rem;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: var(--accent-color);
+}
+
+footer .powered-by {
+    margin-top: 5px;
+}
+
+footer .powered-by a {
+    color: var(--footer-link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    /* Initially, normal style */
+    background-color: transparent; /* No background */
+    padding: 0; /* No extra padding */
+    border-radius: 0; /* No rounded corners */
+}
+
+footer .powered-by a:focus, /* Highlight on keyboard focus */
+footer .powered-by a:active { /* Highlight when clicked */
+    background-color: var(--accent-color); /* Highlight background color */
+    color: var(--white); /* Highlight text color */
+    padding: 2px 5px; /* Add some padding to the highlight */
+    border-radius: 5px; /* Optional: rounded highlight */
+    outline: none; /* Remove default focus outline for a cleaner look */
+}
+
+/* Dark theme footer styles */
+body.dark-theme footer {
+    background-color: var(--dark-footer-bg);
+    color: var(--dark-footer-text);
+    border-top-color: var(--dark-border-color);
+}
+
+body.dark-theme footer .social-icons a {
+    color: var(--dark-footer-icon-color);
+}
+
+body.dark-theme footer .social-icons a:hover {
+    color: var(--dark-accent-color);
+}
+
+body.dark-theme footer .powered-by a {
+    color: var(--dark-footer-link-color);
+}
+
+body.dark-theme footer .powered-by a:focus,
+body.dark-theme footer .powered-by a:active {
+    background-color: var(--dark-accent-color);
+    color: var(--dark-text);
+}
