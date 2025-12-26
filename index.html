@@ -40,6 +40,16 @@
 
 </head>
 
+    <div id="videoPopup" class="video-overlay">
+    <div class="video-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <video id="promoVideo" controls autoplay muted>
+            <source src="asset/PKG.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
 
 <body>
  
@@ -354,9 +364,26 @@
     -->
 
     <script src="script.js"></script>
+    <script>
+    window.onload = function() {
+        // സൈറ്റ് ലോഡ് ആയി 1 സെക്കന്റിന് ശേഷം വീഡിയോ കാണിക്കും
+        setTimeout(function() {
+            document.getElementById('videoPopup').style.display = 'flex';
+            // വീഡിയോ ഓട്ടോമാറ്റിക് പ്ലേ ചെയ്യാൻ
+            document.getElementById('promoVideo').play();
+        }, 1000); 
+    };
+
+    function closePopup() {
+        var video = document.getElementById('promoVideo');
+        video.pause(); // വീഡിയോ നിർത്താൻ
+        document.getElementById('videoPopup').style.display = 'none';
+    }
+</script>
 </body>
 
 </html>
+
 
 
 
