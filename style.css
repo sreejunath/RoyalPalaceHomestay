@@ -54,8 +54,8 @@
 }
 
 .onam-sticker img {
-  max-width: 100px;   /* responsive size */
-  width: 80%;
+  max-width: 200px;   /* responsive size */
+  width: 100%;
   height: auto;
 }
 /* Flower Falling Effect */
@@ -1552,4 +1552,5 @@ body.dark-theme footer .powered-by a:active {
     background-color: var(--dark-accent-color);
     color: var(--dark-text);
 }
+
 
