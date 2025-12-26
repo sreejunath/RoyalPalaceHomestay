@@ -75,7 +75,7 @@
   top: -50px;
   width: 30px;
   height: 30px;
-  background-image: url("https://purepng.com/public/uploads/large/flower-4ms.png"); /* your flower PNG */
+  background-image: url("https://static.vecteezy.com/system/resources/previews/001/194/635/non_2x/snowflake-png.png"); /* your flower PNG */
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0.8;
@@ -1552,3 +1552,4 @@ body.dark-theme footer .powered-by a:active {
     background-color: var(--dark-accent-color);
     color: var(--dark-text);
 }
+
