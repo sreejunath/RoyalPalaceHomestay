@@ -43,7 +43,7 @@
     <div id="videoPopup" class="video-overlay">
     <div class="video-content">
         <span class="close-btn" onclick="closePopup()">&times;</span>
-        <video id="promoVideo" controls autoplay muted>
+        <video id="promoVideo" controls autoplay>
             <source src="asset/PKG.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -364,25 +364,37 @@
     -->
 
     <script src="script.js"></script>
-    <script>
-    window.onload = function() {
-        // സൈറ്റ് ലോഡ് ആയി 1 സെക്കന്റിന് ശേഷം വീഡിയോ കാണിക്കും
+<script>
+    // പേജ് ലോഡ് ആകുമ്പോൾ വീഡിയോ കാണിക്കാൻ
+    window.addEventListener('load', function() {
         setTimeout(function() {
-            document.getElementById('videoPopup').style.display = 'flex';
-            // വീഡിയോ ഓട്ടോമാറ്റിക് പ്ലേ ചെയ്യാൻ
-            document.getElementById('promoVideo').play();
+            var popup = document.getElementById('videoPopup');
+            var video = document.getElementById('promoVideo');
+            
+            popup.style.display = 'flex';
+            
+            // സൗണ്ടോടു കൂടി പ്ലേ ചെയ്യാൻ ശ്രമിക്കുന്നു
+            video.muted = false; 
+            video.play().catch(function(error) {
+                console.log("Autoplay with sound was blocked by browser. User needs to click play.");
+            });
         }, 1000); 
-    };
+    });
 
+    // ക്ലോസ് ബട്ടൺ ഫംഗ്ഷൻ
     function closePopup() {
+        var popup = document.getElementById('videoPopup');
         var video = document.getElementById('promoVideo');
-        video.pause(); // വീഡിയോ നിർത്താൻ
-        document.getElementById('videoPopup').style.display = 'none';
+        
+        video.pause(); // വീഡിയോ നിർത്തുക
+        video.currentTime = 0; // സമയം ആദ്യം മുതൽ ആക്കുക
+        popup.style.display = 'none'; // പോപ്പ്-അപ്പ് ഹൈഡ് ചെയ്യുക
     }
 </script>
 </body>
 
 </html>
+
 
 
 
