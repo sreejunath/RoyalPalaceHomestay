@@ -1,46 +1,43 @@
 /* onam */
-/* Video Popup Styles */
 .video-overlay {
-    display: none; /* Initial state hidden */
     position: fixed;
-    z-index: 99999; /* Higher z-index to stay on top */
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background: rgba(0,0,0,0.8);
+    display: none;
     justify-content: center;
     align-items: center;
+    z-index: 9999;
 }
 
 .video-content {
-    position: relative;
-    width: 90%;
-    max-width: 600px;
+    position: relative; /* REQUIRED for close button */
 }
 
-.video-content video {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+#promoVideo {
+    max-width: 90vw;
+    max-height: 90vh;
+    display: block;
 }
 
-/* Red Close Button */
 .close-btn {
     position: absolute;
-    top: -50px;
-    right: 0;
-    color: #ff0000; /* Red Color */
-    font-size: 50px;
-    font-weight: bold;
+    top: -10px;
+    right: -10px;
+    font-size: 30px;
+    color: white;
     cursor: pointer;
-    line-height: 1;
-    transition: transform 0.3s ease;
+    background: rgba(0,0,0,0.7);
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 50%;
+    z-index: 10000; /* ABOVE VIDEO */
 }
 
-.close-btn:hover {
-    transform: scale(1.2);
-}
 
 
 /* Popup Overlay */
@@ -1596,6 +1593,7 @@ body.dark-theme footer .powered-by a:active {
     background-color: var(--dark-accent-color);
     color: var(--dark-text);
 }
+
 
 
 
