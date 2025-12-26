@@ -1,9 +1,9 @@
 /* onam */
 /* Video Popup Styles */
 .video-overlay {
-    display: none; /* തുടക്കത്തിൽ ഹൈഡ് ചെയ്യാൻ */
+    display: none; /* Initial state hidden */
     position: fixed;
-    z-index: 9999;
+    z-index: 99999; /* Higher z-index to stay on top */
     left: 0;
     top: 0;
     width: 100%;
@@ -15,29 +15,34 @@
 
 .video-content {
     position: relative;
-    width: 80%;
-    max-width: 700px;
+    width: 90%;
+    max-width: 600px;
 }
 
 .video-content video {
     width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
+/* Red Close Button */
 .close-btn {
     position: absolute;
-    top: -40px;
+    top: -50px;
     right: 0;
-    color: white;
-    font-size: 35px;
+    color: #ff0000; /* Red Color */
+    font-size: 50px;
     font-weight: bold;
     cursor: pointer;
+    line-height: 1;
+    transition: transform 0.3s ease;
 }
 
 .close-btn:hover {
-    color: #ff0000;
+    transform: scale(1.2);
 }
+
+
 /* Popup Overlay */
 .popup {
   display: none; 
@@ -1591,6 +1596,7 @@ body.dark-theme footer .powered-by a:active {
     background-color: var(--dark-accent-color);
     color: var(--dark-text);
 }
+
 
 
 
