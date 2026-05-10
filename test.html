@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Hug for Ishah 🐱</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #ffb3c6;
+    --pink-deep: #ff8fab;
+    --lavender: #d4b8e0;
+    --cream: #fff8f0;
+    --peach: #ffd6ba;
+    --soft-brown: #c68b5e;
+    --text: #5a3e4b;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Soft background blobs */
+  .blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    pointer-events: none;
+    animation: blobFloat 8s ease-in-out infinite alternate;
+  }
+  .blob1 { width: 400px; height: 400px; background: var(--pink); top: -100px; left: -100px; animation-delay: 0s; }
+  .blob2 { width: 350px; height: 350px; background: var(--lavender); bottom: -80px; right: -80px; animation-delay: 2s; }
+  .blob3 { width: 250px; height: 250px; background: var(--peach); top: 40%; left: 60%; animation-delay: 4s; }
+
+  @keyframes blobFloat {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(20px, 30px) scale(1.05); }
+  }
+
+  /* Floating hearts */
+  .hearts-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .heart-float {
+    position: absolute;
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: floatUp 6s ease-in infinite;
+  }
+  @keyframes floatUp {
+    0%   { opacity: 0; transform: translateY(0) scale(0.8); }
+    10%  { opacity: 0.7; }
+    80%  { opacity: 0.5; }
+    100% { opacity: 0; transform: translateY(-100vh) scale(1.2) rotate(20deg); }
+  }
+
+  /* Card */
+  .card {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(20px);
+    border-radius: 40px;
+    padding: 48px 52px 52px;
+    max-width: 480px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 80px rgba(255,143,171,0.25), 0 4px 20px rgba(0,0,0,0.06);
+    position: relative;
+    z-index: 10;
+    border: 2px solid rgba(255,180,198,0.4);
+    animation: cardPop 0.7s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes cardPop {
+    from { opacity: 0; transform: scale(0.7) translateY(40px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  /* KITTY */
+  .kitty-wrap {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    animation: kittyBounce 2.4s ease-in-out infinite;
+    cursor: pointer;
+    user-select: none;
+  }
+  @keyframes kittyBounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-12px); }
+  }
+
+  .kitty {
+    position: relative;
+    width: 140px;
+    height: 160px;
+  }
+
+  /* body */
+  .kitty-body {
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 90px; height: 80px;
+    background: #f9d4b0;
+    border-radius: 50% 50% 40% 40%;
+    border: 2.5px solid var(--soft-brown);
+  }
+  /* belly */
+  .kitty-belly {
+    position: absolute;
+    bottom: 12px; left: 50%;
+    transform: translateX(-50%);
+    width: 52px; height: 40px;
+    background: #fff4ea;
+    border-radius: 50%;
+    border: 1.5px solid #e8c4a0;
+  }
+  /* head */
+  .kitty-head {
+    position: absolute;
+    top: 10px; left: 50%;
+    transform: translateX(-50%);
+    width: 88px; height: 80px;
+    background: #f9d4b0;
+    border-radius: 50%;
+    border: 2.5px solid var(--soft-brown);
+  }
+  /* ears */
+  .kitty-ear {
+    position: absolute;
+    top: 6px;
+    width: 0; height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-bottom: 28px solid #f9d4b0;
+    filter: drop-shadow(0 0 1px var(--soft-brown));
+  }
+  .kitty-ear.left  { left: 6px;  transform: rotate(-18deg); }
+  .kitty-ear.right { right: 6px; transform: rotate(18deg); }
+  .kitty-ear-inner {
+    position: absolute;
+    top: 8px;
+    width: 0; height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 18px solid #ffb3c6;
+  }
+  .kitty-ear-inner.left  { left: 13px; transform: rotate(-18deg); }
+  .kitty-ear-inner.right { right: 13px; transform: rotate(18deg); }
+
+  /* eyes */
+  .kitty-eyes {
+    position: absolute;
+    top: 34px; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 18px;
+  }
+  .kitty-eye {
+    width: 16px; height: 16px;
+    background: #5a3e4b;
+    border-radius: 50%;
+    position: relative;
+    animation: blink 4s ease-in-out infinite;
+  }
+  .kitty-eye::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 4px;
+    width: 5px; height: 5px;
+    background: white;
+    border-radius: 50%;
+  }
+  @keyframes blink {
+    0%, 90%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+  }
+
+  /* blush */
+  .kitty-blush {
+    position: absolute;
+    top: 48px;
+    width: 16px; height: 8px;
+    background: #ffb3c6;
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+  .kitty-blush.left  { left: 10px; }
+  .kitty-blush.right { right: 10px; }
+
+  /* nose + mouth */
+  .kitty-nose {
+    position: absolute;
+    top: 54px; left: 50%;
+    transform: translateX(-50%);
+    width: 10px; height: 7px;
+    background: #ff8fab;
+    border-radius: 50% 50% 40% 40%;
+  }
+  .kitty-mouth {
+    position: absolute;
+    top: 62px; left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 12px;
+    border-bottom: 2.5px solid var(--soft-brown);
+    border-radius: 0 0 50% 50%;
+  }
+
+  /* whiskers */
+  .whisker {
+    position: absolute;
+    top: 58px;
+    height: 1.5px;
+    background: var(--soft-brown);
+    opacity: 0.6;
+    border-radius: 2px;
+  }
+  .whisker.l1 { left: 4px; width: 28px; transform: rotate(-8deg); }
+  .whisker.l2 { left: 2px; width: 28px; transform: rotate(0deg); top: 63px; }
+  .whisker.r1 { right: 4px; width: 28px; transform: rotate(8deg); }
+  .whisker.r2 { right: 2px; width: 28px; transform: rotate(0deg); top: 63px; }
+
+  /* arms / hug */
+  .kitty-arms {
+    position: absolute;
+    bottom: 12px; left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+  .kitty-arm {
+    width: 26px; height: 52px;
+    background: #f9d4b0;
+    border: 2.5px solid var(--soft-brown);
+    border-radius: 20px;
+    animation: hugArm 2.4s ease-in-out infinite;
+  }
+  .kitty-arm.left  { transform-origin: bottom right; animation-name: hugArmLeft; }
+  .kitty-arm.right { transform-origin: bottom left;  animation-name: hugArmRight; }
+
+  @keyframes hugArmLeft  {
+    0%, 100% { transform: rotate(-25deg); }
+    50%      { transform: rotate(-40deg); }
+  }
+  @keyframes hugArmRight {
+    0%, 100% { transform: rotate(25deg); }
+    50%      { transform: rotate(40deg); }
+  }
+
+  /* tail */
+  .kitty-tail {
+    position: absolute;
+    bottom: 2px; right: -18px;
+    width: 20px; height: 60px;
+    border-right: 14px solid #f9d4b0;
+    border-bottom: 14px solid transparent;
+    border-radius: 0 0 40px 0;
+    border-right-color: #f9d4b0;
+    border: 2.5px solid var(--soft-brown);
+    border-top: none;
+    border-left: none;
+    border-radius: 0 0 60% 0;
+    animation: tailWag 1.8s ease-in-out infinite;
+    transform-origin: top center;
+  }
+  @keyframes tailWag {
+    0%, 100% { transform: rotate(0deg); }
+    50%      { transform: rotate(18deg); }
+  }
+
+  /* Paws */
+  .kitty-paw {
+    position: absolute;
+    bottom: -10px;
+    width: 30px; height: 18px;
+    background: #f9d4b0;
+    border-radius: 50%;
+    border: 2px solid var(--soft-brown);
+  }
+  .kitty-paw.left  { left: 10px; }
+  .kitty-paw.right { right: 10px; }
+  .kitty-paw::before,
+  .kitty-paw::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    width: 11px; height: 10px;
+    background: #f9d4b0;
+    border-radius: 50%;
+    border: 2px solid var(--soft-brown);
+  }
+  .kitty-paw::before { left: 1px; }
+  .kitty-paw::after  { right: 1px; }
+
+  /* Text */
+  .to-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    color: #c68b5e;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  h1 span {
+    color: var(--pink-deep);
+    position: relative;
+    display: inline-block;
+    animation: nameWiggle 2s ease-in-out infinite;
+  }
+  @keyframes nameWiggle {
+    0%, 100% { transform: rotate(-2deg); }
+    50%      { transform: rotate(2deg); }
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+    color: #a07080;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  /* Hug button */
+  .hug-btn {
+    background: linear-gradient(135deg, var(--pink-deep), var(--lavender));
+    color: white;
+    border: none;
+    padding: 14px 36px;
+    border-radius: 50px;
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(255,143,171,0.4);
+    transition: transform 0.15s, box-shadow 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .hug-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 10px 32px rgba(255,143,171,0.55);
+  }
+  .hug-btn:active { transform: scale(0.96); }
+
+  /* Message bubble */
+  .message-bubble {
+    position: absolute;
+    top: -52px; left: 50%;
+    transform: translateX(-50%) scale(0);
+    background: white;
+    border: 2px solid var(--pink);
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 0.95rem;
+    color: var(--text);
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(255,143,171,0.2);
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    pointer-events: none;
+  }
+  .message-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -9px; left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: white;
+    border-bottom: none;
+    filter: drop-shadow(0 2px 0 var(--pink));
+  }
+  .message-bubble.show { transform: translateX(-50%) scale(1); }
+
+  /* Burst hearts */
+  .burst-heart {
+    position: fixed;
+    font-size: 1.6rem;
+    pointer-events: none;
+    animation: burstOut 1s ease-out forwards;
+    z-index: 50;
+  }
+  @keyframes burstOut {
+    0%   { opacity: 1; transform: translate(0,0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.4); }
+  }
+
+  .footer-note {
+    margin-top: 22px;
+    font-size: 0.82rem;
+    color: #c0a0b0;
+  }
+</style>
+</head>
+<body>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<div class="hearts-bg" id="heartsBg"></div>
+
+<div class="card">
+  <div class="kitty-wrap" id="kitty" onclick="sendHug(event)" title="Click me!">
+    <div class="kitty" style="position:relative;">
+
+      <!-- Speech bubble -->
+      <div class="message-bubble" id="msgBubble">Purrr~ 🐾</div>
+
+      <!-- Tail -->
+      <div class="kitty-tail"></div>
+
+      <!-- Body -->
+      <div class="kitty-body">
+        <div class="kitty-belly"></div>
+        <!-- Paws -->
+        <div class="kitty-paw left"></div>
+        <div class="kitty-paw right"></div>
+      </div>
+
+      <!-- Arms -->
+      <div class="kitty-arms">
+        <div class="kitty-arm left"></div>
+        <div class="kitty-arm right"></div>
+      </div>
+
+      <!-- Head -->
+      <div class="kitty-head">
+        <!-- Ears -->
+        <div class="kitty-ear left"></div>
+        <div class="kitty-ear right"></div>
+        <div class="kitty-ear-inner left"></div>
+        <div class="kitty-ear-inner right"></div>
+        <!-- Eyes -->
+        <div class="kitty-eyes">
+          <div class="kitty-eye"></div>
+          <div class="kitty-eye"></div>
+        </div>
+        <!-- Blush -->
+        <div class="kitty-blush left"></div>
+        <div class="kitty-blush right"></div>
+        <!-- Nose -->
+        <div class="kitty-nose"></div>
+        <!-- Mouth -->
+        <div class="kitty-mouth"></div>
+        <!-- Whiskers -->
+        <div class="whisker l1"></div>
+        <div class="whisker l2"></div>
+        <div class="whisker r1"></div>
+        <div class="whisker r2"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="to-label">A little something for</p>
+  <h1>Dear <span>Ishah</span> 🌸</h1>
+  <p class="subtitle">
+    Someone is thinking of you and<br>
+    sending you the warmest, squishiest hug! 🤗💕
+  </p>
+
+  <button class="hug-btn" onclick="sendHug(event)">
+    Send a Hug 🐱💖
+  </button>
+
+  <p class="footer-note">Click the kitty or the button anytime you need a hug~</p>
+</div>
+
+<script>
+  const messages = [
+    "Purrr~ 🐾", "Hugs!! 💕", "You're amazing! ✨",
+    "Meow~ 🐱", "Feel the love! 🌸", "Stay cozy! 🍵",
+    "Big squish! 🤗", "You matter! 💖", "*purrs loudly*"
+  ];
+  let msgIdx = 0;
+  const bubble = document.getElementById('msgBubble');
+
+  function sendHug(e) {
+    bubble.textContent = messages[msgIdx % messages.length];
+    msgIdx++;
+    bubble.classList.add('show');
+    setTimeout(() => bubble.classList.remove('show'), 2200);
+
+    // burst hearts
+    const cx = e.clientX || window.innerWidth / 2;
+    const cy = e.clientY || window.innerHeight / 2;
+    const emojis = ['💖','💕','🌸','✨','🐾','💝','🌷'];
+    for (let i = 0; i < 8; i++) {
+      const el = document.createElement('div');
+      el.className = 'burst-heart';
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 60 + Math.random() * 80;
+      el.style.left = cx + 'px';
+      el.style.top  = cy + 'px';
+      el.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
+      el.style.setProperty('--dy', Math.sin(angle) * dist + 'px');
+      el.style.animationDelay = (Math.random() * 0.15) + 's';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1200);
+    }
+  }
+
+  // Floating hearts background
+  const bg = document.getElementById('heartsBg');
+  const floatEmoji = ['💕','🌸','✨','💖','🐾','🌷'];
+  function spawnFloater() {
+    const el = document.createElement('div');
+    el.className = 'heart-float';
+    el.textContent = floatEmoji[Math.floor(Math.random() * floatEmoji.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.top  = '100vh';
+    el.style.animationDuration = (5 + Math.random() * 5) + 's';
+    el.style.animationDelay    = (Math.random() * 2) + 's';
+    el.style.fontSize = (0.8 + Math.random() * 1.0) + 'rem';
+    bg.appendChild(el);
+    setTimeout(() => el.remove(), 12000);
+  }
+  setInterval(spawnFloater, 900);
+  for (let i = 0; i < 6; i++) setTimeout(spawnFloater, i * 300);
+</script>
+</body>
+</html>
